@@ -9,7 +9,7 @@ window.addEventListener("load", function () {
                <li>Diameter: ${json[index].diameter}</li>
                <li>Star: ${json[index].star}</li>
                <li>Distance from Earth: ${json[index].distance} </li>
-               <li>Number of Moons: ${json[index].moons}</li>
+               <li>Number of Moons: ${json[index].moons}</li> 
             </ul><img src="${json[index].image}">`;
       });
       let refreshButton = document.getElementById("refresh");
