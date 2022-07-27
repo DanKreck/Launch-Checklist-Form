@@ -6,6 +6,10 @@ div {
     text-align: left;
 }
 
+#refresh {
+    text-align: center;
+}
+
 #itemStatus {
     visibility: hidden;   
 }

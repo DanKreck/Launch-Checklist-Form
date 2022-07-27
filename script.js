@@ -12,6 +12,10 @@ window.addEventListener("load", function () {
                <li>Number of Moons: ${json[index].moons}</li>
             </ul><img src="${json[index].image}">`;
       });
+      let refreshButton = document.getElementById("refresh");
+         refreshButton.addEventListener("click", function (event) {
+            location.reload();
+      });
       launchForm.addEventListener("submit", function (event) {
          event.preventDefault();
          let pilotInput = document.querySelector("input[name=pilotName]");
