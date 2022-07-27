@@ -32,16 +32,22 @@ window.addEventListener("load", function () {
       let massValue = massInput.value;
       let massCheck = Number(massValue);
       
+      function notReady(){
+         launchStatus.innerHTML = "Shuttle not ready for launch";
+         launchStatus.style.color = "red";
+      }
+      function ready(){
+         launchStatus.innerHTML = "Shuttle is ready for launch";
+         launchStatus.style.color = "green";
+      }
       if (!pilot || !copilot || !fuelValue || !massValue) {
             alert("All fields are required!");
       }
       if (isNaN(fuelCheck) === true || isNaN(massCheck) === true) {
-         launchStatus.innerHTML = "Shuttle not ready for launch";
-         launchStatus.style.color = "red";
+         notReady();
          alert("Fuel Level & Cargo Mass must be numbers.");
       } else if (isNaN(pilotCheck) === false || isNaN(copilotCheck) === false) {
-         launchStatus.innerHTML = "Shuttle not ready for launch";
-         launchStatus.style.color = "red";
+         notReady();
          alert("Pilot Name & Co-pilot Name must be strings.")
       } else { 
          itemStatus.style.visibility = "visible";
@@ -50,21 +56,17 @@ window.addEventListener("load", function () {
          fuelStatus.innerHTML = `Fuel Level: ${fuelValue}`;
          cargoStatus.innerHTML = `Cargo Mass: ${massValue}`;
          if (fuelValue < 10000 && massValue > 10000) {
-            launchStatus.innerHTML = "Shuttle not ready for launch";
-            launchStatus.style.color = "red";
+            notReady();
             fuelStatus.innerHTML = "Fuel Level: Fuel level is too low!";
             cargoStatus.innerHTML = `Cargo Mass: Cargo mass too high!`;
          } else if (fuelValue < 10000) {
-            launchStatus.innerHTML = "Shuttle not ready for launch";
-            launchStatus.style.color = "red";
+            notReady();
             fuelStatus.innerHTML = "Fuel Level: Fuel level is too low!";
          } else if (massValue > 10000) {
-            launchStatus.innerHTML = "Shuttle not ready for launch";
-            launchStatus.style.color = "red";
+            notReady();
             cargoStatus.innerHTML = `Cargo Mass: Cargo mass too high!`;
          } else {
-            launchStatus.innerHTML = "Shuttle is ready for launch";
-            launchStatus.style.color = "green";
+            ready();
             fuelStatus.innerHTML = `Fuel Level: Fuel level check passed.`;
             cargoStatus.innerHTML = `Cargo Mass: Cargo mass check passed.`;
          }
