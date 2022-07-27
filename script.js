@@ -39,6 +39,8 @@ window.addEventListener("load", function () {
       function ready(){
          launchStatus.innerHTML = "Shuttle is ready for launch";
          launchStatus.style.color = "green";
+         fuelStatus.innerHTML = `Fuel Level: Fuel level check passed.`;
+         cargoStatus.innerHTML = `Cargo Mass: Cargo mass check passed.`;
       }
       if (!pilot || !copilot || !fuelValue || !massValue) {
             alert("All fields are required!");
@@ -65,11 +67,7 @@ window.addEventListener("load", function () {
          } else if (massValue > 10000) {
             notReady();
             cargoStatus.innerHTML = `Cargo Mass: Cargo mass too high!`;
-         } else {
-            ready();
-            fuelStatus.innerHTML = `Fuel Level: Fuel level check passed.`;
-            cargoStatus.innerHTML = `Cargo Mass: Cargo mass check passed.`;
-         }
+         } else {ready();}
       }
    });
 });
