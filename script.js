@@ -32,6 +32,11 @@ window.addEventListener("load", function () {
       let massValue = massInput.value;
       let massCheck = Number(massValue);
       
+      let launchStatus = document.getElementById("launchStatus");
+      let copilotStatus = document.getElementById("copilotStatus");
+      let fuelStatus = document.getElementById("fuelStatus");
+      let cargoStatus = document.getElementById("cargoStatus");
+
       function notReady(){
          launchStatus.innerHTML = "Shuttle not ready for launch";
          launchStatus.style.color = "red";
