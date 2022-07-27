@@ -20,14 +20,27 @@ window.addEventListener("load", function(){
       userInputs.push(document.querySelector("input[name=copilotName]"));
       userInputs.push(document.querySelector("input[name=fuelLevel]"));
       userInputs.push(document.querySelector("input[name=cargoMass]"));
+
+      let fuelInput = document.querySelector("input[name=fuelLevel]");
+      let fuelValue = fuelInput.value;
+      let fuelCheck = Number(fuelValue);
+
+      let massInput = document.querySelector("input[name=cargoMass]");
+      let massValue = massInput.value;
+      let massCheck = Number(massValue);
       
       for(let i=0; i<userInputs.length; i++){
-         console.log(userInputs[i].value);
          if(!userInputs[i].value ){
             alert("All fields are required!");
             event.preventDefault();
             break;
          }
+      }
+
+      if(isNaN(fuelCheck) === true || isNaN(massCheck) === true ) { 
+         console.log(fuelCheck);
+         console.log(massCheck);
+         alert("Please enter valid types.")
       }
 
    });
@@ -41,9 +54,29 @@ window.addEventListener("load", function(){
       
       //Grab formgroup values, if they are empty: alert ~~~~~~~~~~~~~~~
 
-      //Check fuel and mass to be numbers 
+      //Check fuel and mass to be numbers ~~~~~~~~
       //check the values, and report launch status
       // Make the list visible
+      
+
+      // let titleInput = document.querySelector("input[name=pilotName]");
+      // let title = titleInput.value;
+      // let titleCheck = Number(title);
+
+
+      // if(title === ""){
+      //       //alert
+      // }else if(isNaN(titleCheck) === false) { // <- Not a number
+      //    alert("Please enter valid types.")
+      // }
+
+
+
+
+      //    bookList.style.visibility = "visible";
+      //    bookTitle.innerHTML = `Title: ${title.value}`
+
+      
 
    //fetch planet data
       //randomly choose one of the planets
