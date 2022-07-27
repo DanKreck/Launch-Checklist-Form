@@ -1,5 +1,3 @@
-let userInputs = [];
-
 window.addEventListener("load", function () {
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
       response.json().then(function (json) {
@@ -16,33 +14,22 @@ window.addEventListener("load", function () {
       });
       launchForm.addEventListener("submit", function (event) {
          event.preventDefault();
-         userInputs.push(document.querySelector("input[name=pilotName]"));
-         userInputs.push(document.querySelector("input[name=copilotName]"));
-         userInputs.push(document.querySelector("input[name=fuelLevel]"));
-         userInputs.push(document.querySelector("input[name=cargoMass]"));
-
          let pilotInput = document.querySelector("input[name=pilotName]");
          let pilot = pilotInput.value;
          let pilotCheck = Number(pilot);
-
          let copilotInput = document.querySelector("input[name=copilotName]");
          let copilot = copilotInput.value;
          let copilotCheck = Number(copilot);
-
          let fuelInput = document.querySelector("input[name=fuelLevel]");
          let fuelValue = fuelInput.value;
          let fuelCheck = Number(fuelValue);
-
          let massInput = document.querySelector("input[name=cargoMass]");
          let massValue = massInput.value;
          let massCheck = Number(massValue);
-
-         for (let i = 0; i < userInputs.length; i++) {
-            if (!userInputs[i].value) {
+         
+         if (!pilot || !copilot || !fuelValue || !massValue) {
                alert("All fields are required!");
-            }
          }
-         // Type Validation
          if (isNaN(fuelCheck) === true || isNaN(massCheck) === true) {
             launchStatus.innerHTML = "Shuttle not ready for launch";
             launchStatus.style.color = "red";
@@ -51,13 +38,12 @@ window.addEventListener("load", function () {
             launchStatus.innerHTML = "Shuttle not ready for launch";
             launchStatus.style.color = "red";
             alert("Pilot Name & Co-pilot Name must be strings.")
-         } else { //Build Form to avoid empty list item
+         } else { 
             itemStatus.style.visibility = "visible";
             pilotStatus.innerHTML = `Pilot: ${pilot}`;
             copilotStatus.innerHTML = `Co-Pilot: ${copilot}`;
             fuelStatus.innerHTML = `Fuel Level: ${fuelValue}`;
             cargoStatus.innerHTML = `Cargo Mass: ${massValue}`;
-            //Value Validation
             if (fuelValue < 10000 && massValue > 10000) {
                launchStatus.innerHTML = "Shuttle not ready for launch";
                launchStatus.style.color = "red";
@@ -81,8 +67,3 @@ window.addEventListener("load", function () {
       });
    });
 });
-
-//TODO
-      //fetch planet data
-         //randomly choose one of the planets
-         //display random planet's info (like above) push it to top container
