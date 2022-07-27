@@ -4,7 +4,7 @@ window.addEventListener("load", function () {
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
       response.json().then(function (json) {
          const target = document.getElementById("missionTarget");
-         let index = Math.floor(Math.random() * json.length) + 1;
+         let index = Math.floor(Math.random() * json.length);
          target.innerHTML = `
             <h2>Mission Destination</h2>
             <ul><li>Name: ${json[index].name}</li>
