@@ -31,12 +31,12 @@ window.addEventListener("load", function () {
       let massInput = document.querySelector("input[name=cargoMass]");
       let massValue = massInput.value;
       let massCheck = Number(massValue);
-      
       let launchStatus = document.getElementById("launchStatus");
+      let pilotStatus = document.getElementById("pilotStatus");
       let copilotStatus = document.getElementById("copilotStatus");
       let fuelStatus = document.getElementById("fuelStatus");
       let cargoStatus = document.getElementById("cargoStatus");
-
+      
       function notReady(){
          launchStatus.innerHTML = "Shuttle not ready for launch";
          launchStatus.style.color = "red";
@@ -50,13 +50,10 @@ window.addEventListener("load", function () {
       if (!pilot || !copilot || !fuelValue || !massValue) {
             alert("All fields are required!");
       }
-      if (isNaN(fuelCheck) === true || isNaN(massCheck) === true) {
+      if (isNaN(fuelCheck) === true || isNaN(massCheck) === true || isNaN(pilotCheck) === false || isNaN(copilotCheck) === false) {
          notReady();
-         alert("Fuel Level & Cargo Mass must be numbers.");
-      } else if (isNaN(pilotCheck) === false || isNaN(copilotCheck) === false) {
-         notReady();
-         alert("Pilot Name & Co-pilot Name must be strings.")
-      } else { 
+         alert("Names must be strings. Fuel Level & Cargo Mass must be numbers.");
+      }else { 
          itemStatus.style.visibility = "visible";
          pilotStatus.innerHTML = `Pilot: ${pilot}`;
          copilotStatus.innerHTML = `Co-Pilot: ${copilot}`;
